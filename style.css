@@ -22,3 +22,13 @@ h1 {
   margin-top: 2rem;
   /*  */
 }
+
+.cityForm {
+  margin-top: 6rem;
+}
+
+@media (min-width: 768px) {
+  .cityName {
+    width: 50%;
+  }
+}

@@ -14,10 +14,38 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container-fluid">
-      <h1>Weather App</h1>
-    </div>
-    <!--  -->
+    <!-- Header -->
+    <header>
+      <div class="container-fluid">
+        <h1>Weather App</h1>
+      </div>
+    </header>
+    <!-- Form -->
+    <form>
+      <div class="container">
+        <div
+          class="d-md-flex justify-content-center align-items-center cityForm"
+        >
+          <div class="input-group mb-3 cityName">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="City Name"
+              aria-label="City Name"
+              aria-describedby="button-addon2"
+            />
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              id="button-addon2"
+            >
+              Button
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <section class="p-5"></section>
     <script src="script.js"></script>
   </body>
 </html>
