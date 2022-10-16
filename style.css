@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@500&family=Source+Sans+Pro&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(img/cloud.svg);
+  font-family: "Noto Sans Ethiopic", sans-serif;
+}
+
+html {
+  font-size: 12px;
+}
+
+h1 {
+  text-align: center;
+  color: black;
+  font-size: 5rem;
+  margin-top: 2rem;
+  /*  */
+}
