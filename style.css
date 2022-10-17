@@ -27,6 +27,14 @@ h1 {
   margin-top: 6rem;
 }
 
+.box {
+  margin-top: 14rem;
+}
+
+.boxTitle {
+  font-size: 2.5rem;
+}
+
 @media (min-width: 768px) {
   .cityName {
     width: 50%;

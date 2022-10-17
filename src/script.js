@@ -6,7 +6,5 @@ searchbtn.addEventListener("click", Search);
 
 function Search(e) {
   e.preventDefault();
-  console.log("submitted");
-  console.log(city.value);
-  city.value = "";
+  let cityName = city.value;
 }
