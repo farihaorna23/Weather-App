@@ -16,7 +16,9 @@ function Search(e) {
 async function fetchApi(city) {
   let cityName = city;
   try {
-    let response = await fetch(`${weatherUrl}q=${cityName}&appid=${apiKey}`);
+    let response = await fetch(
+      `${weatherUrl}q=${cityName}&appid=${apiKey}&units=metric`
+    );
     let data = await response.json();
     console.log(data);
   } catch (err) {
