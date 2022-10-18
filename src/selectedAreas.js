@@ -4,8 +4,17 @@ export class SelectedAreas {
     (this.id = 0), (this.savedAreaList = []);
   }
 
-  addCity(city) {
-    let newCity = new City(this.id++, city);
+  addCity(city, weather, temperature, description, timeStamp) {
+    let newCity = new City(
+      this.id++,
+      city,
+      weather,
+      temperature,
+      description,
+      timeStamp
+    );
+    console.log(newCity);
     this.savedAreaList.push(newCity);
+    console.log(this.savedAreaList);
   }
 }

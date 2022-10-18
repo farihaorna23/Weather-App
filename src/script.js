@@ -64,7 +64,7 @@ function updateWeather(city, weather, temperature, description, timeStamp) {
   saveBtn.textContent = "Save Place";
   saveBtn.style.margin = "1rem";
   saveBtn.addEventListener("click", () => {
-    savedAreas.addCity(city);
+    savedAreas.addCity(city, weather, temperature, description, timeStamp);
     updateSavedCity();
     saveBtn.disabled = true;
   });
@@ -110,7 +110,13 @@ function updateSavedCity() {
     checkWeatherBtn.textContent = "Check Weather";
     checkWeatherBtn.style.margin = "1rem";
     checkWeatherBtn.addEventListener("click", () => {
-      updateWeather();
+      updateWeather(
+        savedAreas.savedAreaList[i].city,
+        savedAreas.savedAreaList[i].weather,
+        savedAreas.savedAreaList[i].temperature,
+        savedAreas.savedAreaList[i].description,
+        savedAreas.savedAreaList[i].timeStamp
+      );
     });
     ul.append(li1);
     savedCity.append(ul, removeBtn, checkWeatherBtn);
