@@ -90,6 +90,29 @@ function updateWeather(city, weather, temperature, description, timeStamp) {
 
 function updateSavedCity() {
   for (let i = 0; i < savedAreas.savedAreaList.length; i++) {
-    console.log(savedAreas.savedAreaList[i]);
+    let ul = document.createElement("ul");
+    ul.className = "list-group";
+    let li1 = document.createElement("li");
+    li1.className = "list-group-item";
+    li1.textContent = `City: ${savedAreas.savedAreaList[i].city}`;
+    let removeBtn = document.createElement("button");
+    removeBtn.type = "button";
+    removeBtn.className = "btn btn-primary btn-sm";
+    removeBtn.textContent = "Remove";
+    removeBtn.style.margin = "1rem";
+    removeBtn.addEventListener("click", () => {
+      savedAreas.removeCity(savedAreas.savedAreaList[i].id);
+      updateSavedCity();
+    });
+    let checkWeatherBtn = document.createElement("button");
+    checkWeatherBtn.type = "button";
+    checkWeatherBtn.className = "btn btn-primary btn-sm";
+    checkWeatherBtn.textContent = "Check Weather";
+    checkWeatherBtn.style.margin = "1rem";
+    checkWeatherBtn.addEventListener("click", () => {
+      updateWeather();
+    });
+    ul.append(li1);
+    savedCity.append(ul, removeBtn, checkWeatherBtn);
   }
 }
