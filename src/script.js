@@ -41,9 +41,36 @@ function updateWeather(city, weather, temperature, description) {
   li3.textContent = `Description: ${description}`;
   li3.className = "list-group-item";
   let li4 = document.createElement("li");
-  li4.textContent = `Temperature: ${temperature}`;
+  li4.textContent = `Temperature: ${temperature}℉`;
   li4.className = "list-group-item";
   ul.append(li1, li2, li3, li4);
+  let saveBtn = document.createElement("button");
+  saveBtn.type = "button";
+  saveBtn.className = "btn btn-primary btn-sm";
+  saveBtn.textContent = "Save Place";
+  saveBtn.style.margin = "1rem";
+  saveBtn.addEventListener("click", () => {
+    addPlace(city);
+  });
+  let fahrenheitBtn = document.createElement("button");
+  fahrenheitBtn.type = "button";
+  fahrenheitBtn.className = "btn btn-primary btn-sm";
+  fahrenheitBtn.textContent = "℉";
+  fahrenheitBtn.style.margin = "1rem";
+  fahrenheitBtn.addEventListener("click", temp => {
+    let farenheit = temp * 1.8 + 32;
+    return (li4.textContent = `Temperature: ${farenheit}℉`);
+  });
+  let celciusBtn = document.createElement("button");
+  celciusBtn.type = "button";
+  celciusBtn.className = "btn btn-primary btn-sm";
+  celciusBtn.textContent = "℃";
+  celciusBtn.style.margin = "1rem";
+  celciusBtn.addEventListener("click", () => {
+    li4.textContent = `Temperature: ${temperature}℃`;
+  });
   weatherBox.appendChild(ul);
-  console.log(weatherBox);
+  weatherBox.appendChild(saveBtn);
+  weatherBox.appendChild(fahrenheitBtn);
+  weatherBox.appendChild(celciusBtn);
 }
