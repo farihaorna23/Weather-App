@@ -5,7 +5,9 @@ import {
   apiKey,
   weatherBox,
   savedCity,
-  background
+  background,
+  weatherCol,
+  cityCol
 } from "./variables.js";
 import { SelectedAreas } from "./selectedAreas.js";
 
@@ -13,6 +15,9 @@ let savedAreas = new SelectedAreas();
 
 form.addEventListener("submit", Search);
 searchbtn.addEventListener("click", Search);
+
+weatherCol.hidden = true;
+cityCol.hidden = true;
 
 let weatherUrl = "https://api.openweathermap.org/data/2.5/weather?";
 
@@ -80,6 +85,7 @@ function switchBackground(weather) {
 
 function updateWeather(city, weather, temperature, description, timeStamp) {
   switchBackground(weather);
+  weatherCol.hidden = false;
   let ul = document.createElement("ul");
   ul.className = "list-group";
   let li1 = document.createElement("li");
@@ -104,6 +110,7 @@ function updateWeather(city, weather, temperature, description, timeStamp) {
   saveBtn.textContent = "Save Place";
   saveBtn.style.margin = "1rem";
   saveBtn.addEventListener("click", () => {
+    cityCol.hidden = false;
     savedAreas.addCity(city, weather, temperature, description, timeStamp);
     updateSavedCity();
     saveBtn.disabled = true;

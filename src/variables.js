@@ -4,4 +4,6 @@ export let searchbtn = document.getElementById("searchbtn");
 export let weatherBox = document.getElementById("weatherBox");
 export let savedCity = document.getElementById("savedCity");
 export let background = document.getElementById("background");
+export let weatherCol = document.getElementById("weather-col");
+export let cityCol = document.getElementById("city-col");
 export let apiKey = "368e109c93e37d28d5ba1fe761361bbd";
