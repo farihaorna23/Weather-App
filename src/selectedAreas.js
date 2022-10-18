@@ -13,8 +13,10 @@ export class SelectedAreas {
       description,
       timeStamp
     );
-    console.log(newCity);
     this.savedAreaList.push(newCity);
-    console.log(this.savedAreaList);
+  }
+
+  removeCity(id) {
+    this.savedAreaList = this.savedAreaList.filter(city => city.id !== id);
   }
 }

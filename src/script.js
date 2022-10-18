@@ -89,6 +89,7 @@ function updateWeather(city, weather, temperature, description, timeStamp) {
 }
 
 function updateSavedCity() {
+  savedCity.innerHTML = "";
   for (let i = 0; i < savedAreas.savedAreaList.length; i++) {
     let ul = document.createElement("ul");
     ul.className = "list-group";
@@ -102,6 +103,7 @@ function updateSavedCity() {
     removeBtn.style.margin = "1rem";
     removeBtn.addEventListener("click", () => {
       savedAreas.removeCity(savedAreas.savedAreaList[i].id);
+      console.log(savedAreas.savedAreaList);
       updateSavedCity();
     });
     let checkWeatherBtn = document.createElement("button");
