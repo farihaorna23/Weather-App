@@ -1,4 +1,14 @@
-import { city, form, searchbtn, apiKey, weatherBox } from "./variables.js";
+import {
+  city,
+  form,
+  searchbtn,
+  apiKey,
+  weatherBox,
+  savedCity
+} from "./variables.js";
+import { SelectedAreas } from "./selectedAreas.js";
+
+let savedAreas = new SelectedAreas();
 
 form.addEventListener("submit", Search);
 searchbtn.addEventListener("click", Search);
@@ -22,13 +32,14 @@ async function fetchApi(city) {
     let weather = data.weather[0].main;
     let temperature = data.main.temp;
     let description = data.weather[0].description;
-    updateWeather(cityName, weather, temperature, description);
+    let timeStamp = new Date();
+    updateWeather(cityName, weather, temperature, description, timeStamp);
   } catch (err) {
     console.error(err);
   }
 }
 
-function updateWeather(city, weather, temperature, description) {
+function updateWeather(city, weather, temperature, description, timeStamp) {
   let ul = document.createElement("ul");
   ul.className = "list-group";
   let li1 = document.createElement("li");
@@ -43,14 +54,19 @@ function updateWeather(city, weather, temperature, description) {
   let li4 = document.createElement("li");
   li4.textContent = `Temperature: ${temperature}℃`;
   li4.className = "list-group-item";
-  ul.append(li1, li2, li3, li4);
+  let li5 = document.createElement("li");
+  li5.textContent = `Time Stamp: ${timeStamp}℃`;
+  li5.className = "list-group-item";
+  ul.append(li1, li2, li3, li4, li5);
   let saveBtn = document.createElement("button");
   saveBtn.type = "button";
   saveBtn.className = "btn btn-primary btn-sm";
   saveBtn.textContent = "Save Place";
   saveBtn.style.margin = "1rem";
   saveBtn.addEventListener("click", () => {
-    addPlace(city);
+    savedAreas.addCity(city);
+    updateSavedCity();
+    saveBtn.disabled = true;
   });
   let fahrenheitBtn = document.createElement("button");
   fahrenheitBtn.type = "button";
@@ -58,9 +74,7 @@ function updateWeather(city, weather, temperature, description) {
   fahrenheitBtn.textContent = "℉";
   fahrenheitBtn.style.margin = "1rem";
   fahrenheitBtn.addEventListener("click", () => {
-    console.log(temperature);
-    let farenheit = Math.round(temperature * 1.8 + 32);
-    console.log(farenheit);
+    let farenheit = temperature.toFixed(1) * 1.8 + 32;
     return (li4.textContent = `Temperature: ${farenheit}℉`);
   });
   let celciusBtn = document.createElement("button");
@@ -71,8 +85,11 @@ function updateWeather(city, weather, temperature, description) {
   celciusBtn.addEventListener("click", () => {
     li4.textContent = `Temperature: ${temperature}℃`;
   });
-  weatherBox.appendChild(ul);
-  weatherBox.appendChild(saveBtn);
-  weatherBox.appendChild(fahrenheitBtn);
-  weatherBox.appendChild(celciusBtn);
+  weatherBox.append(ul, saveBtn, fahrenheitBtn, celciusBtn);
+}
+
+function updateSavedCity() {
+  for (let i = 0; i < savedAreas.savedAreaList.length; i++) {
+    console.log(savedAreas.savedAreaList[i]);
+  }
 }
