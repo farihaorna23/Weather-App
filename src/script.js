@@ -41,7 +41,7 @@ function updateWeather(city, weather, temperature, description) {
   li3.textContent = `Description: ${description}`;
   li3.className = "list-group-item";
   let li4 = document.createElement("li");
-  li4.textContent = `Temperature: ${temperature}℉`;
+  li4.textContent = `Temperature: ${temperature}℃`;
   li4.className = "list-group-item";
   ul.append(li1, li2, li3, li4);
   let saveBtn = document.createElement("button");
@@ -57,8 +57,10 @@ function updateWeather(city, weather, temperature, description) {
   fahrenheitBtn.className = "btn btn-primary btn-sm";
   fahrenheitBtn.textContent = "℉";
   fahrenheitBtn.style.margin = "1rem";
-  fahrenheitBtn.addEventListener("click", temp => {
-    let farenheit = temp * 1.8 + 32;
+  fahrenheitBtn.addEventListener("click", () => {
+    console.log(temperature);
+    let farenheit = Math.round(temperature * 1.8 + 32);
+    console.log(farenheit);
     return (li4.textContent = `Temperature: ${farenheit}℉`);
   });
   let celciusBtn = document.createElement("button");
