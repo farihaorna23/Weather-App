@@ -4,7 +4,8 @@ import {
   searchbtn,
   apiKey,
   weatherBox,
-  savedCity
+  savedCity,
+  background
 } from "./variables.js";
 import { SelectedAreas } from "./selectedAreas.js";
 
@@ -39,7 +40,46 @@ async function fetchApi(city) {
   }
 }
 
+function switchBackground(weather) {
+  switch (weather) {
+    case "Clear":
+      background.style.backgroundImage = "url('img/Clear.jpg')";
+      background.style.backgroundPosition = "center";
+      background.style.backgroundSize = "cover";
+      break;
+    case "Rain":
+      background.style.backgroundImage = "url('img/Rain.jpg')";
+      background.style.backgroundPosition = "center";
+      background.style.backgroundSize = "cover";
+      break;
+    case "Clouds":
+      background.style.backgroundImage = "url('img/Cloudy.jpg')";
+      background.style.backgroundPosition = "center";
+      background.style.backgroundSize = "cover";
+      break;
+    case "Fog":
+      background.style.backgroundImage = "url('img/Fog.jpg')";
+      background.style.backgroundPosition = "center";
+      background.style.backgroundSize = "cover";
+      break;
+    case "Mist":
+      background.style.backgroundImage = "url('img/Mist.jpg')";
+      background.style.backgroundPosition = "center";
+      background.style.backgroundSize = "cover";
+      break;
+    case "Haze":
+      background.style.backgroundImage = "url('img/Haze.jpg')";
+      background.style.backgroundPosition = "center";
+      background.style.backgroundSize = "cover";
+      break;
+    default:
+      background.style.backgroundImage = "url('img/cloud.svg')";
+      break;
+  }
+}
+
 function updateWeather(city, weather, temperature, description, timeStamp) {
+  switchBackground(weather);
   let ul = document.createElement("ul");
   ul.className = "list-group";
   let li1 = document.createElement("li");
